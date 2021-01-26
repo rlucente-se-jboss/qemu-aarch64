@@ -32,10 +32,11 @@ Red Hat. From the host,
 
     scp -P 2222 setup-rhel8.sh rlucente@localhost:
 
-On the emulated system, edit `setup-rhel8.sh` and set the `USERNAME`
+Log on to the emulated system and edit `setup-rhel8.sh` and set the `USERNAME`
 and `PASSWORD` to match your [Red Hat Customer Portal](https://access.redhat.com)
-credentials. Then in the guest,
+credentials. Then,
 
+    ssh -p 2222 rlucente@localhost
     sudo ./setup-rhel8.sh
 
 ## Running
