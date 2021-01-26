@@ -27,7 +27,8 @@ fi
 # 8 cores
 # create a SLiRP mode network backend named "vnet" to NAT to the
 #   host's network and forward port 2222 on the host to port 22
-#   on the guest. The network runs dhcp for 192.168.76.0/24
+#   on the guest. The network runs dhcp for the $VM_NET address
+#   range
 # create a virtio-net-pci device on the backend "vnet" network 
 # create "drive0" using the blank image file to act as the hard disk
 # create "drive1" as the CDROM for ISO installation
@@ -40,7 +41,7 @@ qemu-system-aarch64 \
     -cpu cortex-a72 \
     -smp $NUM_CORES \
     -device virtio-net-pci,netdev=mynet0 \
-    -netdev user,id=mynet0,net=192.168.76.0/24,hostfwd=tcp::2222-:22 \
+    -netdev user,id=mynet0,net=$VM_NET,hostfwd=tcp::2222-:22 \
     -drive file=rhel-disk.img,if=none,id=drive0,cache=writeback \
     -device virtio-blk,drive=drive0,bootindex=0 \
     -drive file=$ISO_PATH,if=none,id=drive1,media=cdrom \
