@@ -5,7 +5,7 @@
 # do everything in the same directory as this script
 pushd $(dirname $0) &> /dev/null
 
-if [[ ! -f flash0.img -o ! -f flash1.img ]]
+if [ ! -f flash0.img -o ! -f flash1.img ]
 then
   # create the raw images to be used as flash for UEFI and efi variable storage
   rm -f flash0.img flash1.img
@@ -14,7 +14,8 @@ then
   dd if=$UEFI_FW_PATH bs=1m of=flash0.img conv=notrunc
 fi
 
-if [[ ! -f rhel-disk.img ]]
+if [ ! -f rhel-disk.img ]
+then
   # create a fresh hard disk for install
   rm -f rhel-disk.img
   qemu-img create rhel-disk.img $HDD_SIZE
