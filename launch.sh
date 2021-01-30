@@ -9,9 +9,9 @@ if [ ! -f flash0.img -o ! -f flash1.img ]
 then
   # create the raw images to be used as flash for UEFI and efi variable storage
   rm -f flash0.img flash1.img
-  dd if=/dev/zero bs=1m count=64 of=flash0.img
-  dd if=/dev/zero bs=1m count=64 of=flash1.img
-  dd if=$UEFI_FW_PATH bs=1m of=flash0.img conv=notrunc
+  dd if=/dev/zero bs=1048576 count=64 of=flash0.img
+  dd if=/dev/zero bs=1048576 count=64 of=flash1.img
+  dd if=$UEFI_FW_PATH bs=1048576 of=flash0.img conv=notrunc
 fi
 
 if [ ! -f rhel-disk.img ]
@@ -26,7 +26,7 @@ fi
 # 8 GB memory
 # cortex-a72 (ARMv8) CPU
 # 8 cores
-# create a SLiRP mode network backend named "vnet" to NAT to the
+# create a SLiRP mode network backend named "mynet0" to NAT to the
 #   host's network and forward port 2222 on the host to port 22
 #   on the guest. The network runs dhcp for the $VM_NET address
 #   range
