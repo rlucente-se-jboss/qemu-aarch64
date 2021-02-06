@@ -1,20 +1,18 @@
 # qemu-aarch64
 This simple tutorial helps get an ARMv8 emulated system up and
-running on either RHEL 8 or OSX.
+running on either Fedora 33, RHEL 8, or OSX.
 
 ## Install QEMU
 Clone this repository to your local host. You'll need to install
 QEMU. Once installed, QEMU will place firmware files in
 `/usr/local/share/qemu` with `.fd` extensions.
 
-### Install QEMU on OSX
-The easiest way to do this is to use [brew](https://brew.sh). Once
-brew is enabled, type the following:
+### Install QEMU on Fedora
+To install QEMU on Fedora simply use:
 
-    brew install qemu
+    sudo dnf -y install qemu
 
 ### Install QEMU on RHEL
-
 On RHEL, you'll need to register and update the system. Edit
 `setup-rhel8.sh` and set the `USERNAME` and `PASSWORD` to match
 your [Red Hat Customer Portal](https://access.redhat.com) credentials.
@@ -30,12 +28,21 @@ install QEMU, do the following:
 
 Provide your password for `sudo` when prompted.
 
+### Install QEMU on OSX
+The easiest way to do this is to use [brew](https://brew.sh). Once
+brew is enabled, type the following:
+
+    brew install qemu
+
 ## Installation
-Adjust the various parameters in the `demo.conf` file. Obtain the
-DVD ISO image for the operating system you'd like to install. This
-defaults to RHEL 8.3 for aarch64 which can be downloaded from the
-[Red Hat Customer Portal](https://access.redhat.com/downloads/content/419/ver=/rhel---8/8.3/aarch64/product-software).
-Then,
+Adjust the various parameters in the `demo.conf` file. For Fedora,
+you must modify the `UEFI_FW_PATH` to be
+
+    UEFI_FW_PATH=/usr/share/edk2/aarch64/QEMU_EFI.fd
+
+Obtain the DVD ISO image for the operating system you'd like to
+install. This defaults to RHEL 8.3 for aarch64 which can be downloaded
+from the [Red Hat Customer Portal](https://access.redhat.com/downloads/content/419/ver=/rhel---8/8.3/aarch64/product-software). Then,
 
     ./launch.sh
 
