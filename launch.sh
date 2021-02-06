@@ -42,7 +42,7 @@ qemu-system-aarch64 \
     -cpu cortex-a72 \
     -smp $NUM_CORES \
     -device virtio-net-pci,netdev=mynet0 \
-    -netdev user,id=mynet0,net=$VM_NET,hostfwd=tcp::2222-:22 \
+    -netdev user,id=mynet0,net=$VM_NET,hostfwd=tcp::2222-:22,hostfwd=tcp::9090-:9090 \
     -drive file=rhel-disk.img,if=none,id=drive0,cache=writeback \
     -device virtio-blk,drive=drive0,bootindex=0 \
     -drive file=$ISO_PATH,if=none,id=drive1,media=cdrom \
