@@ -4,8 +4,15 @@ running on either Fedora 33, RHEL 8, or OSX.
 
 ## Install QEMU
 Clone this repository to your local host. You'll need to install
-QEMU. Once installed, QEMU will place firmware files in
-`/usr/local/share/qemu` with `.fd` extensions.
+QEMU. Once installed, QEMU will place firmware files with `.fd`
+extensions in system-specific locations shown below:
+
+* Fedora 33: /usr/share/edk2/aarch64/
+* RHEL 8: /opt/qemu-5.2.0/share/qemu/
+* OSX: /usr/local/share/qemu/
+
+Make sure to adjust the `demo.conf` settings appropriately as
+described below.
 
 ### Install QEMU on Fedora
 To install QEMU on Fedora simply use:
