@@ -21,7 +21,7 @@ then
   qemu-img create rhel-disk.img $HDD_SIZE
 fi
 
-# QEMU 5.2 ARM Virtual Machine
+# QEMU ARM Virtual Machine
 # no graphical console, redirect serial I/O to the terminal
 # 8 GB memory
 # cortex-a72 (ARMv8) CPU
