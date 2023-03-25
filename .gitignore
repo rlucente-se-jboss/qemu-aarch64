@@ -1,0 +1,3 @@
+# exclude any backup files
+*.bak
+
