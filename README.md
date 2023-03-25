@@ -21,11 +21,11 @@ To install QEMU on Fedora simply use:
 
 ### Install QEMU on RHEL
 On RHEL, you'll need to register and update the system. Edit
-`setup-rhel8.sh` and set the `USERNAME` and `PASSWORD` to match
+`demo.conf` and set the `USERNAME` and `PASSWORD` to match
 your [Red Hat Customer Portal](https://access.redhat.com) credentials.
 Then,
 
-    sudo ./setup-rhel8.sh
+    sudo ./setup-rhel.sh
 
 Next, you'll need to obtain a QEMU rpm as RHEL does not include the
 ability to emulate aarch64 architectures OOTB. Follow these
@@ -82,20 +82,18 @@ mode of the anaconda installer for RHEL. Make sure to configure the
 various options including networking and a minimal install. Also
 make sure to create a regular user with system admin privileges.
 
-Immediately after installation, you can copy the `setup-rhel8.sh`
-script to the emulated system to subscribe and pull updates from
-Red Hat. From the host,
+Immediately after installation, you can copy the `demo.conf` and
+`setup-rhel.sh` files to the emulated system to subscribe and pull
+updates from Red Hat. From the host,
 
-    scp -P 2222 setup-rhel8.sh USER@localhost:
+    scp -P 2222 demo.conf setup-rhel.sh USER@localhost:
 
 Log on to the emulated system with the regular `USER` you created
-at installation. After logging in, edit `setup-rhel8.sh` and set
-the `USERNAME` and `PASSWORD` to match your
-[Red Hat Customer Portal](https://access.redhat.com) credentials.
-Then,
+at installation and register and update the system as shown in the
+following commands.
 
     ssh -p 2222 USER@localhost
-    sudo ./setup-rhel8.sh
+    sudo ./setup-rhel.sh
 
 ## Running
 Once installed, the directory containing this repo will have several
